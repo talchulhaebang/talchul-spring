@@ -1,4 +1,4 @@
-package world.haebang.talchul.authorization.application
+package world.haebang.talchul.configuration
 
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration

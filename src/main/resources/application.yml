@@ -18,3 +18,6 @@ spring:
 logging.level:
   org.hibernate.SQL: debug
   org.hibernate.type: trace
+
+cors:
+  originPatterns: http://localhost:8081
