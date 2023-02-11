@@ -1,5 +1,6 @@
 package world.haebang.talchul.authorization.application
 
 interface AuthService {
-    fun get(): String
+    fun getPublicKeyText(): String
+    fun decrypt(encrypted: String): String
 }

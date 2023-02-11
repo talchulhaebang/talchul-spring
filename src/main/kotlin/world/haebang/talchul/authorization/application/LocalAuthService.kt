@@ -1,16 +1,23 @@
 package world.haebang.talchul.authorization.application
 
+import org.apache.tomcat.util.codec.binary.Base64
 import org.springframework.stereotype.Service
-import java.nio.file.Files
-import kotlin.io.path.Path
+import java.nio.charset.Charset
+import javax.crypto.Cipher
 
 @Service
-class LocalAuthService : AuthService {
-    companion object {
-        const val path: String = "/Users/ryudana/public.pem"
+class LocalAuthService(
+    private val fileKeyManager: FileKeyManager
+) : AuthService {
+
+    override fun getPublicKeyText(): String {
+        return fileKeyManager.getPublicKeyText()
     }
 
-    override fun get(): String {
-        return Files.readString(Path(path))
+    override fun decrypt(encrypted: String): String {
+        return Cipher.getInstance(FileKeyManager.ALGORITHM)
+            .also { it.init(Cipher.DECRYPT_MODE, fileKeyManager.loadPrivateKey()) }
+            .let { it.doFinal(Base64.decodeBase64(encrypted)) }
+            .toString(Charset.defaultCharset())
     }
 }
