@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:h2:tcp://localhost/~/haebang01
+    url: jdbc:h2:tcp://localhost/~/haebang01;MODE=MYSQL
     username: test
     password: test
     driver-class-name: org.h2.Driver
