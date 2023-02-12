@@ -1,5 +1,6 @@
 package world.haebang.talchul.store.adapter.`in`
 
+import org.springframework.web.bind.annotation.DeleteMapping
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.PostMapping
@@ -27,5 +28,10 @@ class StoreController(
     @PostMapping
     fun register(@RequestBody request: StoreRegisterRequest) {
         return storeService.register(request)
+    }
+
+    @DeleteMapping("{storeId}")
+    fun delete(@PathVariable storeId: Long) {
+        storeService.delete()
     }
 }
