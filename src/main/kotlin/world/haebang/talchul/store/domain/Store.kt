@@ -1,15 +1,17 @@
 package world.haebang.talchul.store.domain
 
-import javax.persistence.Entity
-import javax.persistence.GeneratedValue
-import javax.persistence.GenerationType
-import javax.persistence.Id
+import world.haebang.talchul.store.adapter.`in`.StoreSearchResponse
+import javax.persistence.*
 
 @Entity
-class Store(
+@Table(name = "store")
+class Store private constructor(
     val name: String,
+    val code: String,
     val address: String,
     val url: String,
+    var latitude: String?,
+    var longitude: String?,
 ) {
 
     @Id
@@ -17,14 +19,14 @@ class Store(
     var id: Long? = null
         private set
 
-    var latitude: String? = null
-        private set
+    companion object {
+        fun of(name: String, code: String, address: String, url: String, latitude: String?, longitude: String?): Store {
+            return Store(name, code, address, url, latitude, longitude)
+        }
+    }
 
-    var longitude: String? = null
-        private set
-
-    fun of(name: String, address: String, url: String): Store {
-        return Store(name, address, url)
+    fun toResponse(): StoreSearchResponse {
+        return StoreSearchResponse(id!!, name, address, url, longitude, latitude)
     }
 }
 
