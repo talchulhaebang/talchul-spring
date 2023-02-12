@@ -26,3 +26,7 @@ cors:
 feign:
   url:
     scrape: 192.168.200.101:3000/scrape
+
+springdoc:
+  swagger-ui:
+    path: /api-docs

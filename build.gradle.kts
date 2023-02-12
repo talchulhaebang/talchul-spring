@@ -39,8 +39,8 @@ dependencies {
 	implementation("com.fasterxml.jackson.datatype:jackson-datatype-jdk8")
 	implementation("com.fasterxml.jackson.datatype:jackson-datatype-jsr310")
 
-	// configuration processor
-	annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
+	// swagger
+	implementation("org.springdoc:springdoc-openapi-ui:1.6.13")
 }
 
 tasks.withType<KotlinCompile> {
