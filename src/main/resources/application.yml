@@ -18,6 +18,11 @@ spring:
 logging.level:
   org.hibernate.SQL: debug
   org.hibernate.type: trace
+  project.user.UserClient: DEBUG
 
 cors:
   originPatterns: http://localhost:8081
+
+feign:
+  url:
+    scrape: 192.168.200.101:3000/scrape

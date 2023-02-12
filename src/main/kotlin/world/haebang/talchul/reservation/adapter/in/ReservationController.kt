@@ -1,27 +1,28 @@
 package world.haebang.talchul.reservation.adapter.`in`
 
-import org.springframework.web.bind.annotation.DeleteMapping
-import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.PostMapping
-import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.RestController
+import org.springframework.web.bind.annotation.*
+import world.haebang.talchul.reservation.adapter.out.ReservationSearchResponse
+import world.haebang.talchul.reservation.application.ReservationService
 
 @RestController
 @RequestMapping("/reservation")
-class ReservationController {
+class ReservationController(
+    private val reservationService: ReservationService,
+) {
 
     @GetMapping
-    fun get() {
-
+    fun search(@RequestParam storeCode: String, @RequestParam date: String): List<ReservationSearchResponse> {
+        return reservationService.search(ReservationSearchRequest(storeCode, date))
     }
 
-    @PostMapping
+    //@PostMapping
     fun create() {
 
     }
 
-    @DeleteMapping
+    //@DeleteMapping
     fun delete() {
 
     }
+
 }
