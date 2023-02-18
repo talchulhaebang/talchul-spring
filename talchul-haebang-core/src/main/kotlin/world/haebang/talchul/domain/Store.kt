@@ -1,11 +1,10 @@
-package world.haebang.talchul.store.domain
+package world.haebang.talchul.domain
 
-import world.haebang.talchul.store.adapter.`in`.StoreSearchResponse
 import javax.persistence.*
 
 @Entity
 @Table(name = "store")
-class Store private constructor(
+class Store private constructor (
     val name: String,
     val code: String,
     val address: String,
@@ -23,10 +22,6 @@ class Store private constructor(
         fun of(name: String, code: String, address: String, url: String, latitude: String?, longitude: String?): Store {
             return Store(name, code, address, url, latitude, longitude)
         }
-    }
-
-    fun toResponse(): StoreSearchResponse {
-        return StoreSearchResponse(id!!, name, address, url, longitude, latitude)
     }
 }
 

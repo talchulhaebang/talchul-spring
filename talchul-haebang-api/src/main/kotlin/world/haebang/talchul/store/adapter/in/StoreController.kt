@@ -20,7 +20,7 @@ class StoreController(
         return storeService.findAll()
     }
 
-    @GetMapping("{storeId}")
+    @GetMapping("/{storeId}")
     fun searchById(@PathVariable storeId: Long): StoreSearchResponse? {
         return storeService.findById(storeId)
     }
@@ -30,8 +30,8 @@ class StoreController(
         return storeService.register(request)
     }
 
-    @DeleteMapping("{storeId}")
+    @DeleteMapping("/{storeId}")
     fun delete(@PathVariable storeId: Long) {
-        storeService.delete()
+        storeService.delete(storeId)
     }
 }
