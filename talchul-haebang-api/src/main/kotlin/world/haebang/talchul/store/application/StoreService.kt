@@ -4,7 +4,7 @@ import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 import world.haebang.talchul.store.adapter.`in`.StoreRegisterRequest
-import world.haebang.talchul.store.adapter.`in`.StoreSearchResponse
+import world.haebang.talchul.store.adapter.out.StoreSearchResponse
 import world.haebang.talchul.store.adapter.out.StoreRepository
 import world.haebang.talchul.domain.Store
 
