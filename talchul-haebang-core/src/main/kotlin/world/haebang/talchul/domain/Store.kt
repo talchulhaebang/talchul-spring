@@ -4,7 +4,7 @@ import javax.persistence.*
 
 @Entity
 @Table(name = "store")
-class Store private constructor (
+class Store private constructor(
     val name: String,
     val code: String,
     val address: String,
@@ -20,7 +20,14 @@ class Store private constructor (
 
     companion object {
         fun of(name: String, code: String, address: String, url: String, latitude: String?, longitude: String?): Store {
-            return Store(name, code, address, url, latitude, longitude)
+            return Store(
+                name = name,
+                code = code,
+                address = address,
+                url = url,
+                latitude = latitude,
+                longitude = longitude
+            )
         }
     }
 }

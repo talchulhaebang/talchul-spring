@@ -20,7 +20,8 @@ class StoreService(
 
     fun findById(id: Long): StoreSearchResponse {
         return storeRepository.findByIdOrNull(id)?.let { StoreSearchResponse.from(it) }
-            ?: throw IllegalStateException("읎어용 읎어")
+            ?: throw IllegalStateException("해당 Id로 등록된 Store 정보가 존재하지 않습니다.")
+        // TODO 별도 Exception 정의
     }
 
     @Transactional
@@ -28,19 +29,19 @@ class StoreService(
         check(storeRepository.findByCode(request.code) == null) { "해당 Code로 등록된 Store 정보가 존재합니다. code: ${request.code}" }
         storeRepository.save(
             Store.of(
-                request.name,
-                request.code,
-                request.address,
-                request.url,
-                request.latitude,
-                request.longitude
+                name = request.name,
+                code = request.code,
+                address = request.address,
+                url = request.url,
+                latitude = request.latitude,
+                longitude = request.longitude
             )
         )
     }
 
     @Transactional
     fun delete(id: Long) {
-        val result = storeRepository.findByIdOrNull(id) ?: throw IllegalStateException("읎어영 읎어")
+        val result = storeRepository.findByIdOrNull(id) ?: throw IllegalStateException("해당 Id로 등록된 Store 정보가 존재하지 않습니다.")
         storeRepository.delete(result)
     }
 }
